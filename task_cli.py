@@ -6,20 +6,28 @@ exists = os.path.exists("tasks.json")
 
 Initial_task = []
 
-if exists:
+#Method to write data to json
+def write_data(data) -> None:
+    with open("tasks.json","w") as file:
+        json.dump(data,file, indent=2)
+
+def read_data() -> list:
     with open("tasks.json","r") as file:
+        data = json.load(file)
+    return data
+
+#Checks if file exists
+if exists:
+    with open("tasks.json", "r") as file:
         list_of_tasks = json.load(file)
 else:
     with open("tasks.json","w") as file:
-        json.dump(Initial_task,file)
+        json.dump(Initial_task,file, indent=2)
         list_of_tasks = []
 
+#Initialization of required variables
 filtering_list = ["done", "todo", "inprogress"]
-
-
-
 n = len(sys.argv) - 1
-no_of_task = len(list_of_tasks)
 digit_set = {"0","1","2","3","4","5","6","7","8","9"}
 
 
@@ -30,22 +38,16 @@ if n < 1:
 elif "add" == sys.argv[1] and n >= 2:
     print("Command: ", sys.argv[1])
     print("Task: ", sys.argv[2:])
-    list_of_tasks[no_of_task+1] = {"description":sys.argv[2:], "status": "todo"}
+    secondArg = " ".join(sys.argv[2:])
+    list_of_tasks.append({"description":secondArg, "status": "todo"})
     write_data(list_of_tasks)
-    no_of_task = len(list_of_tasks)
     print(list_of_tasks)
 
 elif "delete" == sys.argv[1] and n == 2:
-    print("Command: ", sys.argv[1])
-    if no_of_task < 1:
-        print("Empty List of Tasks")
-    else:    
-        is_digit = sys.argv[2] != "" and set(sys.argv[2]).issubset(digit_set)
-        if is_digit and int(sys.argv[2]) in list_of_tasks:
-            list_of_tasks.pop(int(sys.argv[2]))
-        else:
-            print("Task Not found")
-        print(list_of_tasks)
+    data = read_data()
+    no_of_task = len(data)
+    for i in range(no_of_task):
+        print(f"{i+1}. {data[i]}")
 
 
 
@@ -80,7 +82,5 @@ else:
 
 
 
-def write_data(data) -> None:
-    with open("tasks.json","w") as file:
-        json.dump(data,file)
+
 
