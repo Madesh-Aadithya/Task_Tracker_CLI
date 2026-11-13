@@ -1,38 +1,6 @@
 [
   {
-    "description": "Fix Car",
-    "status": "Todo"
-  },
-  {
-    "description": "Fix Bike",
-    "status": "Todo"
-  },
-  {
-    "description": "FixScooter",
-    "status": "todo"
-  },
-  {
-    "description": "Clean",
-    "status": "todo"
-  },
-  {
-    "description": "Fix Fridge",
-    "status": "todo"
-  },
-  {
-    "description": "Fix Fridge",
-    "status": "todo"
-  },
-  {
-    "description": "Fix Fridge",
-    "status": "todo"
-  },
-  {
-    "description": "Put the fries in the bag bro",
-    "status": "todo"
-  },
-  {
-    "description": "Create a report",
+    "description": "Fix Bag",
     "status": "todo"
   }
 ]

@@ -16,20 +16,29 @@ def read_data() -> list:
         data = json.load(file)
     return data
 
+def print_data() -> None:
+    with open("tasks.json","r") as file:
+        data = json.load(file)
+
+    no_of_task = len(data)
+
+    if no_of_task < 1:
+        print("Empty list")
+    else:
+        for i in range(no_of_task):
+            print(f"{i+1}. {data[i]}")
+    
+
 #Checks if file exists
 if exists:
-    with open("tasks.json", "r") as file:
-        list_of_tasks = json.load(file)
+    list_of_tasks = read_data()
 else:
     with open("tasks.json","w") as file:
         json.dump(Initial_task,file, indent=2)
         list_of_tasks = []
 
-#Initialization of required variables
-filtering_list = ["done", "todo", "inprogress"]
 n = len(sys.argv) - 1
 digit_set = {"0","1","2","3","4","5","6","7","8","9"}
-
 
 
 if n < 1:
@@ -37,18 +46,31 @@ if n < 1:
 
 elif "add" == sys.argv[1] and n >= 2:
     print("Command: ", sys.argv[1])
-    print("Task: ", sys.argv[2:])
     secondArg = " ".join(sys.argv[2:])
+    print("Task: ", secondArg)
     list_of_tasks.append({"description":secondArg, "status": "todo"})
     write_data(list_of_tasks)
-    print(list_of_tasks)
+    print_data()
 
-elif "delete" == sys.argv[1] and n == 2:
-    data = read_data()
-    no_of_task = len(data)
-    for i in range(no_of_task):
-        print(f"{i+1}. {data[i]}")
-
+elif "delete" == sys.argv[1]:
+    no_of_task = len(list_of_tasks)
+    print_data()
+    print("Enter task you want to delete (number/type 'clear' for all the done tasks)")
+    choice = input(": ")
+    int_choice = choice != "" and set(choice).issubset(digit_set)
+    if int_choice and int(choice) > 0 and int(choice) <= no_of_task:
+        list_of_tasks.pop(int(choice)-1)
+        write_data(list_of_tasks)
+        print_data()
+    elif choice.lower() == "clear":
+        for task in list_of_tasks:
+            if task["status"] == "done":
+                index = list_of_tasks.index(task)
+                list_of_tasks.pop(index)
+        write_data(list_of_tasks)
+        print_data()
+    else:
+        print("Invalid Choice")
 
 
 elif "update" == sys.argv[1] and n == 3:
