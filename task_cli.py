@@ -147,11 +147,15 @@ elif "list" == sys.argv[1] and n == 1:
     print_data()
 
 elif "list" == sys.argv[1] and n >=2 :
-    secondArg = sys.argv[2]
+    secondArg = " ".join(sys.argv[2:])
     if secondArg == "todo":
-        print(list_of_tasks)
+        print_data(1)
     elif secondArg == "done":
-        pass
+        print_data(2)
+    elif secondArg == "in progress":
+        print_data(3)
+    else:
+        print("Invalid task list")
 
     
 elif "list" == sys.argv[1] and n == 2:
