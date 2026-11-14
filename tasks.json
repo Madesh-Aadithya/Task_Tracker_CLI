@@ -10,13 +10,5 @@
   {
     "description": "Clean House",
     "status": "todo"
-  },
-  {
-    "description": "Fix Fridge",
-    "status": "done"
-  },
-  {
-    "description": "Buy food",
-    "status": "todo"
   }
 ]

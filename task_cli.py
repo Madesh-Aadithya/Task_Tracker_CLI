@@ -107,10 +107,7 @@ elif "delete" == sys.argv[1]:
         write_data(list_of_tasks)
         print_data()
     elif choice.lower() == "clear":
-        for task in list_of_tasks:
-            if task["status"] == "done":
-                index = list_of_tasks.index(task)
-                list_of_tasks.pop(index)
+        list_of_tasks = [task for task in list_of_tasks if task["status"] != "done"]
         write_data(list_of_tasks)
         print_data()
     else:
