@@ -1,1 +1,18 @@
-[{"description": "Fix Car", "status": "Todo"}, {"description": "Fix Bike", "status": "Todo"}]
+[
+  {
+    "description": "Fix Bike",
+    "status": "todo"
+  },
+  {
+    "description": "Fix Car",
+    "status": "todo"
+  },
+  {
+    "description": "Fix Cable",
+    "status": "todo"
+  },
+  {
+    "description": "Clean House",
+    "status": "todo"
+  }
+]
