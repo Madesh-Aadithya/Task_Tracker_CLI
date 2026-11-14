@@ -1,18 +1,22 @@
 [
   {
+    "description": "Fix Bag",
+    "status": "todo"
+  },
+  {
     "description": "Fix Bike",
-    "status": "todo"
-  },
-  {
-    "description": "Fix Car",
-    "status": "todo"
-  },
-  {
-    "description": "Fix Cable",
-    "status": "todo"
+    "status": "inprogress"
   },
   {
     "description": "Clean House",
+    "status": "todo"
+  },
+  {
+    "description": "Fix Fridge",
+    "status": "done"
+  },
+  {
+    "description": "Buy food",
     "status": "todo"
   }
 ]
